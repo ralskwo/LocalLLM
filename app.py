@@ -29,7 +29,7 @@ def main():
       st.title("LLM 모델과 채팅하기")
       logging.info("앱 시작")
 
-      model = st.sidebar.selectbox("모델을 선택해주세요", ["llama3.2", "llama3", "llava", "gemma2"])
+      model = st.sidebar.selectbox("모델을 선택해주세요", ["llama3.2"])
       logging.info(f"선택한 모델: {model}")
 
       if prompt := st.chat_input("질문해주세요"):
@@ -52,7 +52,7 @@ def main():
                       duration = time.time() - start_time
                       respone_message_with_duration = f"{response_message}\n\nDuration: {duration:.2f} seconds"
                       st.session_state.messages.append({"role": "assistant", "content": respone_message_with_duration})
-                      st.write(f"Duration: {duration:.2f} 초")               
+                      st.write(f"응답 시간: {duration:.2f} 초")               
                 
                 except Exception as e:
                       st.session_state.messasges.append({"role": "assistant", "content": str(e)})
